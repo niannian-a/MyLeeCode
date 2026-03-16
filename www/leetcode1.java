@@ -1,5 +1,8 @@
 package com.leecode.www;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /*给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
 你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。
 你可以按任意顺序返回答案。
@@ -19,14 +22,14 @@ import java.util.Arrays;
 -109 <= target <= 109
 只会存在一个有效答案
 进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？*/
-public class leecode1 {
+public class leetcode1 {
     public static void main(String[] args) {
         int[] nums = {2,7,11,15,19,20,23,99};
         int target = 119;
         int[] result = Solution.twoSum(nums, target);
         System.out.println(Arrays.toString(result));
     }
-    public static class Solution {
+    /*public static class Solution {
         public static int[] twoSum(int[] nums, int target) {
             int[] result =new int[2];
             for(int i=0;i<nums.length;i++){
@@ -38,6 +41,19 @@ public class leecode1 {
                 }
             }
             return result;
+        }
+    }*/
+    public static class Solution {
+        public static int[] twoSum(int[] nums, int target) {
+            Map<Integer, Integer> numMap = new HashMap<>();
+            for(int i=0;i<nums.length;i++)
+            {
+                int complement=target-nums[i];
+                if (numMap.containsKey(complement)){
+                    return new int[]{numMap.get(complement), i};
+                }numMap.put(nums[i],i);
+            }
+            throw new IllegalArgumentException("No two sum solution");
         }
     }
 
