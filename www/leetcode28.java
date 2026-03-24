@@ -27,20 +27,21 @@ public class leetcode28 {
             //先寻找str2首字母的下标
             while (string<=haystack.length()){
                 if (match<needle.length()&&string<haystack.length()&&string!=record&&haystack.charAt(string)==needle.charAt(match)){
+                    //needle和haystack未超出length-1 且 string不为记录值 且 两个下标值对应的字符相等 例如 mississippi issip 1&0 i
                     string++;
-                    match++;
+                    match++;//移位继续判断匹配
                 }else{
-                    if (match==needle.length()){
+                    if (match==needle.length()){//match遍历完只说明 不满足条件 未超出length、不为记录值 即match所有值能在string中找到 即返回 string-needle.length()
                         return string-needle.length();
-                    }else if(string<haystack.length()-1){
-                        if(string==0){
-                            string++;
-                            match=0;
-                        }else {
-                            record=string-match;//记录从record开始不匹配
-                            string=string-match+1;
-                            match=0;
-                        }
+                    }else if(string<haystack.length()-1){//如果match未遍历完 且 string未超出length 即不匹配但string仍剩下字符
+//                        if(string==0){//如果string
+//                            string++;
+//                            match=0;
+//                        }else {
+                        record=string-match;//记录从record开始不匹配
+                        string=string-match+1;//继续匹配
+                        match=0;//从needle开始继续匹配
+                        //}
                     }else {
                         return -1;
                     }
