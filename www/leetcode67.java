@@ -13,72 +13,56 @@ public class leetcode67 {
     //a 和 b 仅由字符 '0' 或 '1' 组成
     //字符串如果不是 "0" ，就不含前导零
     public static void main(String[] args) {
-        String a="111";
-        String b="101";
+        String a="110";
+        String b="111";
         String c=Solution.addBinary(a,b);
         System.out.println(c);
 
     }
 
     public static class Solution {
-        public static int BioToTen(String a){
-            int TenA=0;
-            for(int i=a.length()-1;i<0;i--){
-                TenA+= Math.pow()
-            }
-        }
         public static String addBinary(String a, String b) {//111 1
-//            //末尾相加 判断进位与否
-//            int ap=a.length()-1;
-//            int bp=b.length()-1;//最后一位开始
-//            int s=0;
-//            String c="";
-//            while(ap>=0||bp>=0){
-//                if(ap==0){//ap到首位
-//                    if(a.charAt(ap)+b.charAt(bp)+s>=2){//1+1进位
-//                        c="0"+c;
-//                        //ap--;
-//                        a="0";
-//                        bp--;
-//                        s=1;//进位+1
-//                    }else {// 0+1 0+0 1+0 不进位
-//                        c= String.valueOf(a.charAt(ap)+b.charAt(bp)+s)+c;
-//                        //ap--;
-//                        a="0";
-//                        bp--;
-//                        s=0;
-//                    }
-//                }else if(bp==0){
-//                    if(a.charAt(ap)+b.charAt(bp)+s>=2){//1+1进位
-//                        c="0"+c;
-//                        ap--;
-//                        b="0";
-//                        //bp--;
-//                        s=1;//进位+1
-//                    }else {// 0+1 0+0 1+0 不进位
-//                        c= String.valueOf(a.charAt(ap)+b.charAt(bp)+s)+c;
-//                        //ap--;
-//                        b="0";
-//                        //bp--;
-//                        s=0;
-//                    }
-//                }else {
-//                    //都不为首位
-//                    if(a.charAt(ap)+b.charAt(bp)+s>=2){//1+1进位
-//                        c="0"+c;
-//                        ap--;
-//                        bp--;
-//                        s=1;//进位+1
-//                    }else {// 0+1 0+0 1+0 不进位
-//                        c= String.valueOf(a.charAt(ap)+b.charAt(bp)+s)+c;
-//                        ap--;
-//                        bp--;
-//                        s=0;
-//                    }
-//                }
-//            }
-//            return c;
-            //转十进制再加，再转二进制
+            int al=a.length()-1;//a最后一位
+            int bl=b.length()-1;//b最后一位
+            int s=0;//进位数
+            String result= "";
+            //补0
+            if(al>bl){
+                int d=al-bl;//差的位数
+                for(;d>0;d--){
+                    b="0"+b;
+                    bl++;
+                    System.out.println(b);
+                }
+            }else if(bl>al){
+                int d=bl-al;//差的位数
+                for(;d>0;d--){
+                    a="0"+a;
+                    al++;
+                    System.out.println(a);
+                }
+            }
+            while(al>=0||bl>=0){
+                int anum=a.charAt(al)-48;
+                int bnum=b.charAt(bl)-48;
+                int k=s+anum+bnum;
+                if(k>=2){//1+1+1/1+1+0   1+1=2
+                    int by=k-2;//进位后位数 1/0
+                    result= by+result;//""+"0"="0"
+                    s=1;
+                    al--;
+                    bl--;
+                }else {//0+1+0/1+0+0/0+0+0 s=0不进位 1+0+1
+                    int by=k;//
+                    result=by+result;//"1"+"1"="11"
+                    s=0;
+                    al--;
+                    bl--;
+                }
+            }
+            if(s!=0){
+                return result=s+result;
+            }else return result;
 
         }
     }
