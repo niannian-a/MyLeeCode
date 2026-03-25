@@ -24,7 +24,7 @@ public class leetcode66 {
     //加 1 得到了 9 + 1 = 10。
     //因此，结果应该是 [1,0]。
     public static void main(String[] args) {
-        int[] digits= {1, 2, 3};
+        int[] digits= {9, 9, 9};
         int[] result=Solution.plusOne(digits);
         System.out.println(Arrays.toString(result));
     }
@@ -35,18 +35,16 @@ public class leetcode66 {
             while(i>=0){
                 if(digits[i]!=9){//末尾不为9，不进位
                     digits[i]++;
-                }else {
-                    while (i!=0){//不为开头则执行置0
-                        //为9 判断当前位i是否为数组开头
-                        digits[i]=0;
-                        i--;
-                    }//为开头 例如9999
-                    result[0]=1;
+                    return digits;
+                }else if(i!=0){ //末尾为9且不为第一位，置0后进位继续判断
+                    digits[i]=0;
+                    i--;
+                }else {//为9且为第一位
+                    result=new int[digits.length+1];
+                    result[i]=1;
                     return result;
-                    
                 }
             }
-
             return result;
 
         }
