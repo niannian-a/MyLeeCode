@@ -1,5 +1,7 @@
 package com.leecode.www;
 
+import java.util.Scanner;
+
 public class leetcode69 {
     //给你一个非负整数 x ，计算并返回 x 的 算术平方根 。
     //由于返回类型是整数，结果只保留 整数部分 ，小数部分将被 舍去 。
@@ -11,8 +13,23 @@ public class leetcode69 {
     //输入：x = 8
     //输出：2
     //解释：8 的算术平方根是 2.82842..., 由于返回类型是整数，小数部分将被舍去。
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        int x=scanner.nextInt();
+        int result=Solution.mySqrt(x);
+        System.out.println(result);
+    }
     public static class Solution {
-        public int mySqrt(int x) {
+        public static int mySqrt(int x) {
+            int s=1;
+//            while(s*s<=x){
+//                s++;
+//            }return s-1;
+            int m=x/s;
+            while(s<m){
+                s++;
+                m=x/s;
+            }return m;
 
         }
     }
