@@ -1,6 +1,4 @@
-package com.leecode.www;
-
-import java.util.Arrays;
+package com.leecode.www.leetcodeSet;
 
 public class leetcode27 {
     //给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素。元素的顺序可能发生改变。

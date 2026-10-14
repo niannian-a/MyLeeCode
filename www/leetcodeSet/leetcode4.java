@@ -1,7 +1,5 @@
-package com.leecode.www;
+package com.leecode.www.leetcodeSet;
 
-import javax.print.attribute.standard.MediaName;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class leetcode4 {

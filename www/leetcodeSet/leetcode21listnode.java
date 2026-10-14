@@ -1,6 +1,4 @@
-package com.leecode.www;
-
-import java.util.Scanner;
+package com.leecode.www.leetcodeSet;
 
 public class leetcode21listnode {
     //将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。

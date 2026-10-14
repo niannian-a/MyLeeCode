@@ -1,4 +1,4 @@
-package com.leecode.www;
+package com.leecode.www.leetcodeSet;
 
 import java.util.Arrays;
 
